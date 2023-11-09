@@ -22,18 +22,16 @@ object frmScreenTranslator: TfrmScreenTranslator
   TextHeight = 16
   object Image1: TImage
     Left = 3
-    Top = 48
+    Top = 42
     Width = 756
-    Height = 286
+    Height = 292
     Align = alClient
-    ExplicitLeft = 412
-    ExplicitTop = 114
-    ExplicitWidth = 441
-    ExplicitHeight = 244
+    ExplicitTop = 51
+    ExplicitHeight = 286
   end
   object Panel4: TPanel
     Left = 0
-    Top = 45
+    Top = 39
     Width = 762
     Height = 3
     Align = alTop
@@ -45,9 +43,9 @@ object frmScreenTranslator: TfrmScreenTranslator
   end
   object Panel2: TPanel
     Left = 0
-    Top = 48
+    Top = 42
     Width = 3
-    Height = 286
+    Height = 292
     Align = alLeft
     BevelOuter = bvNone
     Color = clRed
@@ -58,9 +56,9 @@ object frmScreenTranslator: TfrmScreenTranslator
   end
   object Panel3: TPanel
     Left = 759
-    Top = 48
+    Top = 42
     Width = 3
-    Height = 286
+    Height = 292
     Align = alRight
     BevelOuter = bvNone
     Color = clRed
@@ -85,15 +83,15 @@ object frmScreenTranslator: TfrmScreenTranslator
     Left = 0
     Top = 0
     Width = 762
-    Height = 45
+    Height = 39
     Align = alTop
     ParentBackground = False
     TabOrder = 4
     object GroupBox1: TGroupBox
-      Left = 10
-      Top = 0
-      Width = 361
-      Height = 41
+      Left = 6
+      Top = 1
+      Width = 365
+      Height = 34
       Caption = 'Paddings'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -103,8 +101,8 @@ object frmScreenTranslator: TfrmScreenTranslator
       ParentFont = False
       TabOrder = 0
       object Label4: TLabel
-        Left = 90
-        Top = 15
+        Left = 98
+        Top = 11
         Width = 28
         Height = 14
         Alignment = taRightJustify
@@ -118,8 +116,8 @@ object frmScreenTranslator: TfrmScreenTranslator
         ParentFont = False
       end
       object Label5: TLabel
-        Left = 170
-        Top = 15
+        Left = 178
+        Top = 11
         Width = 50
         Height = 14
         Alignment = taRightJustify
@@ -133,8 +131,8 @@ object frmScreenTranslator: TfrmScreenTranslator
         ParentFont = False
       end
       object Label6: TLabel
-        Left = 274
-        Top = 15
+        Left = 282
+        Top = 11
         Width = 37
         Height = 14
         Alignment = taRightJustify
@@ -148,8 +146,8 @@ object frmScreenTranslator: TfrmScreenTranslator
         ParentFont = False
       end
       object Label3: TLabel
-        Left = 10
-        Top = 15
+        Left = 18
+        Top = 11
         Width = 27
         Height = 14
         Alignment = taRightJustify
@@ -163,8 +161,8 @@ object frmScreenTranslator: TfrmScreenTranslator
         ParentFont = False
       end
       object e_paddingLeft: TEdit
-        Left = 124
-        Top = 15
+        Left = 132
+        Top = 11
         Width = 33
         Height = 17
         AutoSize = False
@@ -178,8 +176,8 @@ object frmScreenTranslator: TfrmScreenTranslator
         Text = '0'
       end
       object e_paddingBottom: TEdit
-        Left = 226
-        Top = 15
+        Left = 234
+        Top = 11
         Width = 33
         Height = 17
         AutoSize = False
@@ -193,8 +191,8 @@ object frmScreenTranslator: TfrmScreenTranslator
         Text = '0'
       end
       object e_paddingRight: TEdit
-        Left = 317
-        Top = 15
+        Left = 325
+        Top = 11
         Width = 33
         Height = 17
         AutoSize = False
@@ -208,8 +206,8 @@ object frmScreenTranslator: TfrmScreenTranslator
         Text = '0'
       end
       object e_paddingTop: TEdit
-        Left = 40
-        Top = 15
+        Left = 48
+        Top = 11
         Width = 33
         Height = 17
         AutoSize = False
@@ -223,51 +221,40 @@ object frmScreenTranslator: TfrmScreenTranslator
         Text = '0'
       end
     end
-    object b_set: TBitBtn
-      Left = 377
-      Top = 10
-      Width = 60
-      Height = 25
-      Caption = 'Set'
-      DoubleBuffered = True
-      ParentDoubleBuffered = False
-      TabOrder = 1
-      OnClick = b_setClick
-    end
     object b_run: TButton
-      Left = 443
-      Top = 10
+      Left = 377
+      Top = 7
       Width = 60
       Height = 25
       Caption = 'RUN'
-      TabOrder = 2
+      TabOrder = 1
       OnClick = b_runClick
     end
     object Button3: TButton
-      Left = 507
-      Top = 10
+      Left = 441
+      Top = 7
       Width = 62
       Height = 25
       Caption = 'Close'
-      TabOrder = 3
+      TabOrder = 2
       OnClick = Button3Click
     end
     object Button1: TButton
       Left = 577
-      Top = 10
+      Top = 7
       Width = 75
       Height = 25
       Caption = 'Button1'
-      TabOrder = 4
+      TabOrder = 3
       OnClick = Button1Click
     end
     object Button4: TButton
       Left = 656
-      Top = 10
+      Top = 7
       Width = 75
       Height = 25
       Caption = 'Button2'
-      TabOrder = 5
+      TabOrder = 4
     end
   end
   object Ocr1: TOcr

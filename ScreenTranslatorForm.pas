@@ -25,7 +25,6 @@ type
     e_paddingBottom: TEdit;
     Label6: TLabel;
     e_paddingRight: TEdit;
-    b_set: TBitBtn;
     b_run: TButton;
     Button3: TButton;
     tm_translation: TTimer;
@@ -81,7 +80,7 @@ begin
   Application.Messagebox(PChar(s), 'Сообщение', MB_OK + MB_ICONINFORMATION);
 end;
 
-{ procedure TForm1.WMNCHitTest(var Message: TWMNCHitTest);
+{ procedure TfrmScreenTranslator.WMNCHitTest(var Message: TWMNCHitTest);
   var
   D: Integer;
   P: TPoint;
@@ -137,7 +136,7 @@ begin
   Pen := CreatePen(PS_SOLID, 4, RGB(15, 255, 0));
   OldPen := SelectObject(dc, Pen);
   OldBrush := SelectObject(dc, GetStockObject(NULL_BRUSH));
-  Rectangle(dc, 0, 0, Form1.Width, Form1.Height);
+  Rectangle(dc, 0, 0, frmScreenTranslator.Width, frmScreenTranslator.Height);
   SelectObject(dc, OldBrush);
   SelectObject(dc, OldPen);
   DeleteObject(Pen);
@@ -172,7 +171,7 @@ begin
   Result := true;
 end;
 
-// procedure TForm1.Button2Click(Sender: TObject);
+// procedure TfrmScreenTranslator.Button2Click(Sender: TObject);
 // var
 // wndHandle: HWND;
 // wndName: string;
@@ -183,7 +182,7 @@ end;
 // Image1.Picture := nil;
 // end;
 
-// procedure TForm1.Button5Click(Sender: TObject);
+// procedure TfrmScreenTranslator.Button5Click(Sender: TObject);
 // var
 // hlpr: TScreenShotHelper;
 // begin
@@ -242,53 +241,42 @@ procedure TfrmScreenTranslator.b_findWindowClick(Sender: TObject);
 //  wndHandle: HWND;
 //  wndName: string;
 begin
-//  if helper.FindWindowByTite(e_searchQuery.Text, wndHandle, wndName) then
-//    begin
-//      Form1.TransparentColor := true;
-//      Form1.TransparentColorValue := clAppWorkSpace;
-//      Form1.BorderIcons := [];
-//      Form1.SetFocus;
-//      SetWindowPos(Form1.Handle, HWND_TOPMOST, 0, 0, 0, 0, SWP_NoMove or SWP_NoSize);
-//      BringWindowToTop(wndHandle);
-//      ShowWindow(wndHandle, SW_SHOWNORMAL);
-//      GetWindowRect(wndHandle, helper.windowRect);
-//      // helper.windowRect.Inflate
-//      // InflateRect(windowRect, 4, 2);
-//      appWorkMode := awmRangeDefine;
-//      UpdatePaddingEdits();
-//      e_targetWindow.Text := IntToStr(wndHandle) + ':' + wndName;
-//    end
-//  else
-//    begin
-//      Image1.Picture := nil;
-//      Form1.TransparentColor := false;
-//      SetWindowPos(Form1.Handle, HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NoMove or SWP_NoSize);
-//    end;
+  //  if helper.FindWindowByTite(e_searchQuery.Text, wndHandle, wndName) then
+  //    begin
+  //      frmScreenTranslator.TransparentColor := true;
+  //      frmScreenTranslator.TransparentColorValue := clAppWorkSpace;
+  //      frmScreenTranslator.BorderIcons := [];
+  //      frmScreenTranslator.SetFocus;
+  //      SetWindowPos(frmScreenTranslator.Handle, HWND_TOPMOST, 0, 0, 0, 0, SWP_NoMove or SWP_NoSize);
+  //      BringWindowToTop(wndHandle);
+  //      ShowWindow(wndHandle, SW_SHOWNORMAL);
+  //      GetWindowRect(wndHandle, helper.windowRect);
+  //      // helper.windowRect.Inflate
+  //      // InflateRect(windowRect, 4, 2);
+  //      appWorkMode := awmRangeDefine;
+  //      UpdatePaddingEdits();
+  //      e_targetWindow.Text := IntToStr(wndHandle) + ':' + wndName;
+  //    end
+  //  else
+  //    begin
+  //      Image1.Picture := nil;
+  //      frmScreenTranslator.TransparentColor := false;
+  //      SetWindowPos(frmScreenTranslator.Handle, HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NoMove or SWP_NoSize);
+  //    end;
 
 end;
 
 procedure TfrmScreenTranslator.b_setClick(Sender: TObject);
 begin
-  if appWorkMode = awmRangeDefine then
-    begin
-      Image1.Picture := nil;
-      Application.ProcessMessages;
-      // if rangeDefineMode then
-      // begin
-      helper.SetParams(StrToInt(e_paddingLeft.Text), StrToInt(e_paddingRight.Text), StrToInt(e_paddingTop.Text), StrToInt(e_paddingBottom.Text));
-      helper.GetScreenShot(true);
-      // Image1.Picture.Assign(helper.GetBitmap());
-      Image1.Visible := true;
-    end;
 end;
 
-{ procedure TForm1.CreateParams(var Params: TCreateParams);
+{ procedure TfrmScreenTranslator.CreateParams(var Params: TCreateParams);
   begin
   inherited;
   Params.Style := Params.Style or WS_BORDER or WS_THICKFRAME;
   end; }
 
-// function TForm1.FindWindowByTite(aWindowTitleMask: string; var aWndHandle: HWND; var aWndName: string): Boolean;
+// function TfrmScreenTranslator.FindWindowByTite(aWindowTitleMask: string; var aWndHandle: HWND; var aWndName: string): Boolean;
 // var
 // windowNames: TStrings;
 // wndName: string;
@@ -338,11 +326,11 @@ var
 begin
   if helper.FindWindowByTite('', wndHandle, wndName) then
     begin
-      Form1.TransparentColor := true;
-      Form1.TransparentColorValue := clAppWorkSpace;
-      Form1.BorderIcons := [];
-      Form1.SetFocus;
-      SetWindowPos(Form1.Handle, HWND_TOPMOST, 0, 0, 0, 0, SWP_NoMove or SWP_NoSize);
+      frmScreenTranslator.TransparentColor := true;
+      frmScreenTranslator.TransparentColorValue := clAppWorkSpace;
+      frmScreenTranslator.BorderIcons := [];
+      frmScreenTranslator.SetFocus;
+      SetWindowPos(frmScreenTranslator.Handle, HWND_TOPMOST, 0, 0, 0, 0, SWP_NoMove or SWP_NoSize);
       BringWindowToTop(wndHandle);
       ShowWindow(wndHandle, SW_SHOWNORMAL);
       GetWindowRect(wndHandle, helper.windowRect);
@@ -354,8 +342,8 @@ begin
   else
     begin
       Image1.Picture := nil;
-      Form1.TransparentColor := false;
-      SetWindowPos(Form1.Handle, HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NoMove or SWP_NoSize);
+      frmScreenTranslator.TransparentColor := false;
+      SetWindowPos(frmScreenTranslator.Handle, HWND_NOTOPMOST, 0, 0, 0, 0, SWP_NoMove or SWP_NoSize);
     end;
 
 end;
@@ -425,10 +413,10 @@ begin
       Image1.Picture := nil;
       Image1.Visible := false;
       helper.UpdateWindowRect();
-      e_paddingLeft.Text := IntToStr(Form1.Left - helper.GetWndRect().Left + 12);
-      e_paddingTop.Text := IntToStr(Form1.Top + p_top.Height + 42 - helper.GetWndRect().Top);
-      e_paddingRight.Text := IntToStr(helper.GetWndRect().Right - (Form1.Left + Form1.Width));
-      e_paddingBottom.Text := IntToStr(helper.GetWndRect().Bottom - (Form1.Top + Form1.Height));
+      e_paddingLeft.Text := IntToStr(frmScreenTranslator.Left - helper.GetWndRect().Left + 12);
+      e_paddingTop.Text := IntToStr(frmScreenTranslator.Top + p_top.Height + 42 - helper.GetWndRect().Top);
+      e_paddingRight.Text := IntToStr(helper.GetWndRect().Right - (frmScreenTranslator.Left + frmScreenTranslator.Width));
+      e_paddingBottom.Text := IntToStr(helper.GetWndRect().Bottom - (frmScreenTranslator.Top + frmScreenTranslator.Height));
     end;
 end;
 
@@ -441,14 +429,39 @@ begin
       MsgBox('Set translation area first');
       Exit;
     end;
-  BringWindowToTop(helper.GetWndHandle());
-  helper.GetScreenShot(false);
-  frmRangeSelect.Memo1.Clear;
-  appWorkMode := awmTranslation;
-  WindowState := wsMinimized;
-  frmRangeSelect.Left := Form1.Left + Form1.Width;
-  frmRangeSelect.Show;
-  tm_translation.Enabled := true;
+
+  if appWorkMode = awmRangeDefine then
+    begin
+      Image1.Picture := nil;
+      Application.ProcessMessages;
+      // if rangeDefineMode then
+      // begin
+      helper.SetParams(StrToInt(e_paddingLeft.Text), StrToInt(e_paddingRight.Text), StrToInt(e_paddingTop.Text), StrToInt(e_paddingBottom.Text));
+      helper.GetScreenShot(true);
+      // Image1.Picture.Assign(helper.GetBitmap());
+      Image1.Visible := true;
+      Application.ProcessMessages;
+      Sleep(100);
+      Application.ProcessMessages;
+      helper.GetScreenShot(true);
+      Application.ProcessMessages;
+      Sleep(100);
+      Application.ProcessMessages;
+      helper.GetScreenShot(true);
+      Application.ProcessMessages;
+      Sleep(100);
+      helper.GetScreenShot(true);
+      Application.ProcessMessages;
+//      BringWindowToTop(helper.GetWndHandle());
+//      helper.GetScreenShot(false);
+      frmRangeSelect.Memo1.Clear;
+      appWorkMode := awmTranslation;
+      WindowState := wsMinimized;
+      frmRangeSelect.Left := frmScreenTranslator.Left + frmScreenTranslator.Width;
+      frmRangeSelect.Show;
+      tm_translation.Enabled := true;
+    end;
+
 end;
 
 end.

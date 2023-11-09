@@ -25,6 +25,7 @@ type
     blockTimePeriod: longint; // время между блоками, чтобы опрелелять на какую глубину в прошлое смотреть
     entries: array of REntry;
     source: array of RSourceBlock;
+    procedure AddSourceRec(aText: string); overload;
     procedure AddSourceRec(aBlockId: integer; aText: string; aProcessed: boolean); overload;
     procedure AddSourceRec(aBlockId: integer; aText: string; aCreatedTime: longint; aProcessed: boolean); overload;
     procedure AddEntry(aBlockId: integer; aStringId: integer; aCreatedTime: longint; aStr: string; aVersion: word; aTranslated: boolean);
@@ -64,6 +65,11 @@ begin
   source[High(source)].text := aText;
   source[High(source)].createdTime := aCreatedTime;
   source[High(source)].processed := false;
+end;
+
+procedure TTextAnalyser.AddSourceRec(aText: string);
+begin
+  AddSourceRec(High(source) + 1, aText, DateUtils.MilliSecondOfTheDay(Now()), false);
 end;
 
 constructor TTextAnalyser.Create(aBlockTimePeriod: integer);

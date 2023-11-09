@@ -32,27 +32,27 @@ uses ScreenTranslatorForm;
 procedure TfrmRangeSelect.BitBtn2Click(Sender: TObject);
 begin
   Close;
-  Form1.appWorkMode := awmRangeDefine;
-  Form1.WindowState := wsNormal;
+  frmScreenTranslator.appWorkMode := awmRangeDefine;
+  frmScreenTranslator.WindowState := wsNormal;
 end;
 
 procedure TfrmRangeSelect.b_startStopClick(Sender: TObject);
 begin
-  if Form1.tm_translation.Enabled then
+  if frmScreenTranslator.tm_translation.Enabled then
     begin
-      Form1.tm_translation.Enabled := false;
+      frmScreenTranslator.tm_translation.Enabled := false;
       b_startStop.Caption := 'Start';
     end
   else
     begin
-      Form1.tm_translation.Enabled := true;
+      frmScreenTranslator.tm_translation.Enabled := true;
       b_startStop.Caption := 'Stop';
     end;
 end;
 
 procedure TfrmRangeSelect.FormShow(Sender: TObject);
 begin
-  if Form1.tm_translation.Enabled then
+  if frmScreenTranslator.tm_translation.Enabled then
     b_startStop.Caption := 'Start'
   else
     b_startStop.Caption := 'Stop';
