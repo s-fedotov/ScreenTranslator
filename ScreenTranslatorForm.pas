@@ -237,9 +237,11 @@ procedure TfrmScreenTranslator.Button4Click(Sender: TObject);
 var
   newStr: string;
   newStrTime: longint;
+  idx:integer;
 begin
   ta.DoAnalysis();
-  while ta.ReadEntry(newStr, newStrTime) do
+  idx:=0;
+  while ta.ReadEntry(newStr, newStrTime, idx) do
     begin
       Application.ProcessMessages;
       frmRangeSelect.Memo1.Lines.Add(newStr);
@@ -311,7 +313,7 @@ procedure TfrmScreenTranslator.FormCreate(Sender: TObject);
 begin
   appWorkMode := awmWindowDefine;
   helper := TScreenShotHelper.Create(adtPixels, Image1.Picture);
-  ta := TTextAnalyser.Create(10000);
+  ta := TTextAnalyser.Create(15000);
   if not Ocr1.Active then
     begin
       Ocr1.DataPath := ExtractFilePath(Application.ExeName) + 'tessdata';
@@ -403,6 +405,7 @@ procedure TfrmScreenTranslator.tm_translationTimer(Sender: TObject);
 var
   newStr: string;
   newStrTime: longint;
+  idx:integer;
 begin
   if appWorkMode = awmTranslation then
     begin
@@ -418,7 +421,8 @@ begin
       ta.AddSourceRec(Ocr1.Text);
       ta.DoAnalysis();
       Application.ProcessMessages;
-      while ta.ReadEntry(newStr, newStrTime) do
+      idx:=0;
+      while ta.ReadEntry(newStr, newStrTime, idx) do
         begin
           frmRangeSelect.Memo1.Lines.Add(newStr);
         end;

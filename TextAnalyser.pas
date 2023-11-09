@@ -36,8 +36,7 @@ type
     procedure AddSourceRec(aBlockId: integer; aText: string; aProcessed: boolean); overload;
     procedure AddSourceRec(aBlockId: integer; aText: string; aCreatedTime: longint; aProcessed: boolean); overload;
     procedure AddEntry(aBlockId: integer; aStringId: integer; aCreatedTime: longint; aStr: string; aVersion: word; aRead, aTranslated: boolean);
-    function ReadEntry(var aText: string; var aTime: longint): boolean;
-
+    function ReadEntry(var aText: string; var aTime: longint; var aEntryIdx: integer): boolean;
 
   end;
 
@@ -56,6 +55,7 @@ begin
   entries[High(entries)].version := aVersion;
   entries[High(entries)].read := aRead;
   entries[High(entries)].translated := aTranslated;
+
 end;
 
 procedure TTextAnalyser.AddSourceRec(aBlockId: integer; aText: string; aProcessed: boolean);
@@ -107,14 +107,13 @@ begin
               blockFound := true;
               break;
             end;
-          if sourceIdx = High(source) then
+          Inc(sourceIdx);
+          if sourceIdx > High(source) then
             begin
-              break;
               allDone := true;
+              break;
             end;
-
         end;
-
       if blockFound then //необработанный блок найден
         begin
           strs.Delimiter := Chr(10);
@@ -219,27 +218,27 @@ begin
   CloseFile(f);
 end;
 
-function TTextAnalyser.ReadEntry(var aText: string; var aTime: Integer): boolean;
+function TTextAnalyser.ReadEntry(var aText: string; var aTime: longint; var aEntryIdx: integer): boolean;
 var
   entriesEnd: boolean;
-  entryIdx: integer;
+  //  entryIdx: integer;
 begin
   entriesEnd := false;
-  entryIdx := 0;
+  //  entryIdx := 0;
+  Result:=false;
   while not entriesEnd do
     begin
-      if not entries[entryIdx].read then
+      if aEntryIdx > High(entries) then
+        break;
+      if not entries[aEntryIdx].read then
         begin
-          aText := entries[entryIdx].str;
-          aTime := entries[entryIdx].createdTime;
-          entries[entryIdx].read := true;
+          aText := entries[aEntryIdx].str;
+          aTime := entries[aEntryIdx].createdTime;
+          entries[aEntryIdx].read := true;
           Result := true;
           break;
         end;
-      if entryIdx = High(entries) then
-        break
-      else
-        Inc(entryIdx);
+      Inc(aEntryIdx);
     end;
 end;
 
