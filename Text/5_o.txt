@@ -1,0 +1,56 @@
+----------
+AM after throwing event to Echo's Al scheduling on the column. Echo
+cm unplanned jobs. Those are the jobs that couldn't plan, which you
+would need to outsource.
+Bradley Lok
+‘® So and the next 1E jobs, that's the amount of jobs we could cover.
+Then the hour saved. You can see we're not saving very many hours. It
+actually costii a little bit more
+is actually costing you a little bit more in driver wage.
+wuuru Hecu wy UulduUTI Ue.
+‘W® Because you need. Obviously the extra drivers onto work driver
+savings such as the drm value the jobs
+savings such as the DRM value. The jobs difference is how much
+ech
+echo is done and there
+better echo is done, and there's your percentage uplift.
+outsource saving
+Outsource saving. Again, it's just a monetary value based on the 120.
+how much you would save and then
+How much you would save and then the total saving is a combination
+of your driver
+of your driver hours and your job saved
+of your driver hours and your job saved. So the basic model we need
+to now fine tune this.
+Bradley Lok
+So if we go on to the next one.
+so now the first thing we've
+HOW HUI YUU WUOUTU SaVe @iru UCIT Ue LOLI Saviy 1 a CUTuauUlt
+so now the first
+so now the first thing we've done is we've just refined the shift slightly
+so after throwing it into the echo model we can see where the
+yo HOw Tre Lune
+the majority unplanned jobs are. I'll show you an example of ECHO,
+so we just swapped over the 4:00 PM and
+how we can see nice and easily. So we just swapped over the 4:00 PM
+shift and the 12. So you've got 5 now in the afternoon and 10 in the
+simple swap like that
+simple swap like that you it away uplifting your jobs by 11.58%
+evening. So simple swap like that, you straight away uplifting your
+jobs by 11.58%.
+ou're savi
+‘re saving i hams becomes now
+e Bradley Lok
+@ You're saving in dirhams becomes now 3355 thousand a year, but you
+can see
+can see the the red there. We still lose it on hours, so if we just quickly
+on to the next
+go on to the next one, we're now starting to refine the days slightly,
+fou can
+so you can on the right hand side the safari shifts from midnight till
+10:00 AM you
+tly just by maki
+10:00 AM. You can see we refine slightly just by making more drivers
+work on the busier di
+work on the busier days, less drivers on the quieter days and you start
+saving on your hours as well.
