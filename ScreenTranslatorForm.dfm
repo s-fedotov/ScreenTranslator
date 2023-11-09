@@ -255,6 +255,7 @@ object frmScreenTranslator: TfrmScreenTranslator
       Height = 25
       Caption = 'Button2'
       TabOrder = 4
+      OnClick = Button4Click
     end
   end
   object Ocr1: TOcr

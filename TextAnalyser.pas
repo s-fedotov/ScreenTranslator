@@ -10,6 +10,7 @@ type
     createdTime: longint; // время создания в мс
     str: string; // собственно строка
     version: word;
+    read: boolean;
     translated: boolean;
   end;
 
@@ -25,16 +26,19 @@ type
     blockTimePeriod: longint; // время между блоками, чтобы опрелелять на какую глубину в прошлое смотреть
     entries: array of REntry;
     source: array of RSourceBlock;
-    procedure AddSourceRec(aText: string); overload;
-    procedure AddSourceRec(aBlockId: integer; aText: string; aProcessed: boolean); overload;
-    procedure AddSourceRec(aBlockId: integer; aText: string; aCreatedTime: longint; aProcessed: boolean); overload;
-    procedure AddEntry(aBlockId: integer; aStringId: integer; aCreatedTime: longint; aStr: string; aVersion: word; aTranslated: boolean);
 
   public
     constructor Create(aBlockTimePeriod: integer);
+    procedure DoAnalysis();
     procedure LoadFromFile(aFileName: string; aBlockDelimeter: string); // загружает блоки из файла, разделяет на блоки на базе разделителся
     procedure SaveToFile(aFileName: string); // сохраняет результат в файл
-    procedure DoAnalysis();
+    procedure AddSourceRec(aText: string); overload;
+    procedure AddSourceRec(aBlockId: integer; aText: string; aProcessed: boolean); overload;
+    procedure AddSourceRec(aBlockId: integer; aText: string; aCreatedTime: longint; aProcessed: boolean); overload;
+    procedure AddEntry(aBlockId: integer; aStringId: integer; aCreatedTime: longint; aStr: string; aVersion: word; aRead, aTranslated: boolean);
+    function ReadEntry(var aText: string; var aTime: longint): boolean;
+
+
   end;
 
 implementation
@@ -42,7 +46,7 @@ uses StringSimilarity;
 
 { TTextAnalyser }
 
-procedure TTextAnalyser.AddEntry(aBlockId, aStringId, aCreatedTime: Integer; aStr: string; aVersion: word; aTranslated: boolean);
+procedure TTextAnalyser.AddEntry(aBlockId, aStringId, aCreatedTime: Integer; aStr: string; aVersion: word; aRead, aTranslated: boolean);
 begin
   Setlength(entries, Length(entries) + 1);
   entries[High(entries)].blockId := aBlockId;
@@ -50,6 +54,7 @@ begin
   entries[High(entries)].createdTime := aCreatedTime;
   entries[High(entries)].str := aStr;
   entries[High(entries)].version := aVersion;
+  entries[High(entries)].read := aRead;
   entries[High(entries)].translated := aTranslated;
 end;
 
@@ -124,7 +129,7 @@ begin
                   s := Trim(strs[i]);
                   if Length(s) > 1 then
                     begin
-                      AddEntry(source[sourceIdx].blockId, stringNo, source[sourceIdx].createdTime, s, 1, false);
+                      AddEntry(source[sourceIdx].blockId, stringNo, source[sourceIdx].createdTime, s, 1, false, false);
                       Inc(stringNo);
                     end;
                 end;
@@ -164,7 +169,7 @@ begin
                       if not prevBlockContains then
                         begin
                           Inc(stringNo);
-                          AddEntry(source[sourceIdx].blockId, stringNo, source[sourceIdx].createdTime, s, 1, false);
+                          AddEntry(source[sourceIdx].blockId, stringNo, source[sourceIdx].createdTime, s, 1, false, false);
                         end;
                     end;
                 end;
@@ -212,6 +217,30 @@ begin
         break;
     end;
   CloseFile(f);
+end;
+
+function TTextAnalyser.ReadEntry(var aText: string; var aTime: Integer): boolean;
+var
+  entriesEnd: boolean;
+  entryIdx: integer;
+begin
+  entriesEnd := false;
+  entryIdx := 0;
+  while not entriesEnd do
+    begin
+      if not entries[entryIdx].read then
+        begin
+          aText := entries[entryIdx].str;
+          aTime := entries[entryIdx].createdTime;
+          entries[entryIdx].read := true;
+          Result := true;
+          break;
+        end;
+      if entryIdx = High(entries) then
+        break
+      else
+        Inc(entryIdx);
+    end;
 end;
 
 procedure TTextAnalyser.SaveToFile(aFileName: string);

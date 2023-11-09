@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Masks, Ocr, ExtCtrls, Buttons, ScreenShotHelper;
+  Dialogs, StdCtrls, Masks, Ocr, ExtCtrls, Buttons, ScreenShotHelper, TextAnalyser;
 
 type
 
@@ -46,10 +46,12 @@ type
     procedure tm_translationTimer(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
   private
     { Private declarations }
 
     helper: TScreenShotHelper;
+    ta: TTextAnalyser;
     procedure UpdatePaddingEdits();
     procedure DrawFrame();
     // procedure doFindWindow(wndHandle: HWND);
@@ -59,8 +61,8 @@ type
   protected
     // procedure CreateParams(var Params: TCreateParams); override; // ADD THIS LINE!
     // procedure WMNCHitTest(var Message: TWMNCHitTest); message WM_NCHITTEST;
-    procedure WMNCPaint(var Msg: TWMNCPaint); message WM_NCPAINT;
-    procedure WMActivate(var Msg: TWMActivate); message WM_ACTIVATE;
+//    procedure WMNCPaint(var Msg: TWMNCPaint); message WM_NCPAINT;
+//    procedure WMActivate(var Msg: TWMActivate); message WM_ACTIVATE;
 
   public
     appWorkMode: TAppWorkMode;
@@ -72,7 +74,7 @@ var
 
 implementation
 
-uses ScreenShot, RangeSelectForm, TextAnalyser, StringSimilarity;
+uses ScreenShot, RangeSelectForm, StringSimilarity;
 {$R *.dfm}
 
 procedure MsgBox(s: string);
@@ -121,33 +123,31 @@ end;
 
   end; }
 
-procedure TfrmScreenTranslator.WMNCPaint(var Msg: TWMNCPaint);
-var
-  dc: hDc;
-  Pen: hPen;
-  OldPen: hPen;
-  OldBrush: hBrush;
-
-begin
-  inherited;
-  dc := GetWindowDC(Handle);
-  Msg.Result := 1;
-  // Change the RGB value to change the color
-  Pen := CreatePen(PS_SOLID, 4, RGB(15, 255, 0));
-  OldPen := SelectObject(dc, Pen);
-  OldBrush := SelectObject(dc, GetStockObject(NULL_BRUSH));
-  Rectangle(dc, 0, 0, frmScreenTranslator.Width, frmScreenTranslator.Height);
-  SelectObject(dc, OldBrush);
-  SelectObject(dc, OldPen);
-  DeleteObject(Pen);
-  ReleaseDC(Handle, Canvas.Handle);
-end;
-
-procedure TfrmScreenTranslator.WMActivate(var Msg: TWMActivate);
-begin
-  inherited;
-  // DrawCaption;
-end;
+//procedure TfrmScreenTranslator.WMNCPaint(var Msg: TWMNCPaint);
+//var
+//  dc: hDc;
+//  Pen: hPen;
+//  OldPen: hPen;
+//  OldBrush: hBrush;
+//
+//begin
+//  inherited;
+//  dc := GetWindowDC(Handle);
+//  Msg.Result := 1;
+//  // Change the RGB value to change the color
+//  Pen := CreatePen(PS_SOLID, 4, RGB(15, 255, 0));
+//  OldPen := SelectObject(dc, Pen);
+//  OldBrush := SelectObject(dc, GetStockObject(NULL_BRUSH));
+//  Rectangle(dc, 0, 0, frmScreenTranslator.Width, frmScreenTranslator.Height);
+//  SelectObject(dc, OldBrush);
+//  SelectObject(dc, OldPen);
+//  DeleteObject(Pen);
+//  ReleaseDC(Handle, Canvas.Handle);
+//end;
+//
+//procedure TfrmScreenTranslator.WMActivate(var Msg: TWMActivate);
+//begin
+//end;
 
 function TfrmScreenTranslator.GetWindowTitle(aWndHandle: HWND; var aWndName: string): Boolean;
 var
@@ -196,13 +196,10 @@ end;
 // end;
 
 procedure TfrmScreenTranslator.Button1Click(Sender: TObject);
-var
-  ta: TTextAnalyser;
 begin
-  ta := TTextAnalyser.Create(15000);
   ta.LoadFromFile('Text\5.txt', '----------');
   ta.DoAnalysis();
-  ta.SaveToFile('Text\5_o.txt');
+  //  ta.SaveToFile('Text\5_o.txt');
 end;
 
 procedure TfrmScreenTranslator.DrawFrame();
@@ -234,6 +231,19 @@ end;
 procedure TfrmScreenTranslator.Button3Click(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TfrmScreenTranslator.Button4Click(Sender: TObject);
+var
+  newStr: string;
+  newStrTime: longint;
+begin
+  ta.DoAnalysis();
+  while ta.ReadEntry(newStr, newStrTime) do
+    begin
+      Application.ProcessMessages;
+      frmRangeSelect.Memo1.Lines.Add(newStr);
+    end;
 end;
 
 procedure TfrmScreenTranslator.b_findWindowClick(Sender: TObject);
@@ -301,6 +311,7 @@ procedure TfrmScreenTranslator.FormCreate(Sender: TObject);
 begin
   appWorkMode := awmWindowDefine;
   helper := TScreenShotHelper.Create(adtPixels, Image1.Picture);
+  ta := TTextAnalyser.Create(10000);
   if not Ocr1.Active then
     begin
       Ocr1.DataPath := ExtractFilePath(Application.ExeName) + 'tessdata';
@@ -389,19 +400,28 @@ begin
 end;
 
 procedure TfrmScreenTranslator.tm_translationTimer(Sender: TObject);
+var
+  newStr: string;
+  newStrTime: longint;
 begin
   if appWorkMode = awmTranslation then
     begin
       DrawFrame();
       Image1.Picture := nil;
       Application.ProcessMessages;
-      helper.GetScreenShot(true);
+      helper.GetScreenShot(false);
       Ocr1.Picture.Assign(Image1.Picture);
       Application.ProcessMessages;
       Ocr1.Recognize;
-      frmRangeSelect.Memo1.Lines.Add('----------');
-      frmRangeSelect.Memo1.Lines.Add(Ocr1.Text);
+      //      frmRangeSelect.Memo1.Lines.Add('----------');
+      //      frmRangeSelect.Memo1.Lines.Add(Ocr1.Text);
+      ta.AddSourceRec(Ocr1.Text);
+      ta.DoAnalysis();
       Application.ProcessMessages;
+      while ta.ReadEntry(newStr, newStrTime) do
+        begin
+          frmRangeSelect.Memo1.Lines.Add(newStr);
+        end;
       DrawFrame();
     end;
 end;
@@ -434,11 +454,8 @@ begin
     begin
       Image1.Picture := nil;
       Application.ProcessMessages;
-      // if rangeDefineMode then
-      // begin
       helper.SetParams(StrToInt(e_paddingLeft.Text), StrToInt(e_paddingRight.Text), StrToInt(e_paddingTop.Text), StrToInt(e_paddingBottom.Text));
       helper.GetScreenShot(true);
-      // Image1.Picture.Assign(helper.GetBitmap());
       Image1.Visible := true;
       Application.ProcessMessages;
       Sleep(100);
@@ -452,8 +469,6 @@ begin
       Sleep(100);
       helper.GetScreenShot(true);
       Application.ProcessMessages;
-//      BringWindowToTop(helper.GetWndHandle());
-//      helper.GetScreenShot(false);
       frmRangeSelect.Memo1.Clear;
       appWorkMode := awmTranslation;
       WindowState := wsMinimized;
