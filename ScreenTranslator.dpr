@@ -7,7 +7,8 @@ uses
   ScreenShotHelper in 'ScreenShotHelper.pas',
   RangeSelectForm in 'RangeSelectForm.pas' {frmRangeSelect},
   StringSimilarity in 'StringSimilarity.pas',
-  TextAnalyser in 'TextAnalyser.pas';
+  TextAnalyser in 'TextAnalyser.pas',
+  Logger in 'Logger.pas';
 
 {$R *.res}
 

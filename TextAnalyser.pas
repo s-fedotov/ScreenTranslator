@@ -1,15 +1,22 @@
 unit TextAnalyser;
 
 interface
-uses SysUtils, DateUtils, Classes;
+uses SysUtils, DateUtils, Classes, Logger;
 type
+
+  RHistory = record
+    text: string; // собственно строка
+    version: word;
+    createdTime: longint;
+  end;
 
   REntry = record
     blockId: integer; // номер блока (номер картинки)
     stringId: integer; // уникальный номер строки
     createdTime: longint; // время создания в мс
-    str: string; // собственно строка
+    text: string; // собственно строка
     version: word;
+    history: array of RHistory;
     read: boolean;
     translated: boolean;
   end;
@@ -23,12 +30,14 @@ type
 
   TTextAnalyser = class
   private
-    blockTimePeriod: longint; // время между блоками, чтобы опрелелять на какую глубину в прошлое смотреть
+    blockReadPeriod: longint; //период чтения с экрана содержимого блока текста
+    historyDepthPeriod: longint; // время на какую глубину в прошлое смотреть при слиянии строк
     entries: array of REntry;
     source: array of RSourceBlock;
+    log: TLogger;
 
   public
-    constructor Create(aBlockTimePeriod: integer);
+    constructor Create(aBlockReadPeriod, aHistoryDepthPeriod: longint; aLogger: TLogger);
     procedure DoAnalysis();
     procedure LoadFromFile(aFileName: string; aBlockDelimeter: string); // загружает блоки из файла, разделяет на блоки на базе разделителся
     procedure SaveToFile(aFileName: string); // сохраняет результат в файл
@@ -36,7 +45,8 @@ type
     procedure AddSourceRec(aBlockId: integer; aText: string; aProcessed: boolean); overload;
     procedure AddSourceRec(aBlockId: integer; aText: string; aCreatedTime: longint; aProcessed: boolean); overload;
     procedure AddEntry(aBlockId: integer; aStringId: integer; aCreatedTime: longint; aStr: string; aVersion: word; aRead, aTranslated: boolean);
-    function ReadEntry(var aText: string; var aTime: longint; var aEntryIdx: integer): boolean;
+    procedure AddEntryHistory(aEntryIdx: integer; aCreatedTime: longint; aStr: string; aVersion: word);
+    function ReadEntry(aMinVersion: integer; var aText: string; var aTime: longint; var aEntryIdx: integer): boolean;
 
   end;
 
@@ -51,7 +61,7 @@ begin
   entries[High(entries)].blockId := aBlockId;
   entries[High(entries)].stringId := aStringId;
   entries[High(entries)].createdTime := aCreatedTime;
-  entries[High(entries)].str := aStr;
+  entries[High(entries)].text := aStr;
   entries[High(entries)].version := aVersion;
   entries[High(entries)].read := aRead;
   entries[High(entries)].translated := aTranslated;
@@ -61,6 +71,17 @@ end;
 procedure TTextAnalyser.AddSourceRec(aBlockId: integer; aText: string; aProcessed: boolean);
 begin
   AddSourceRec(aBlockId, atext, DateUtils.MilliSecondOfTheDay(Now()), aProcessed);
+end;
+
+procedure TTextAnalyser.AddEntryHistory(aEntryIdx, aCreatedTime: Integer; aStr: string; aVersion: word);
+var
+  newLen: integer;
+begin
+  newLen := Length(entries[aEntryIdx].history) + 1;
+  SetLength(entries[aEntryIdx].history, newLen);
+  entries[aEntryIdx].history[newLen - 1].text := aStr;
+  entries[aEntryIdx].history[newLen - 1].version := aVersion;
+  entries[aEntryIdx].history[newLen - 1].createdTime := aCreatedTime;
 end;
 
 procedure TTextAnalyser.AddSourceRec(aBlockId: integer; aText: string; aCreatedTime: Integer; aProcessed: boolean);
@@ -77,38 +98,42 @@ begin
   AddSourceRec(High(source) + 1, aText, DateUtils.MilliSecondOfTheDay(Now()), false);
 end;
 
-constructor TTextAnalyser.Create(aBlockTimePeriod: integer);
+constructor TTextAnalyser.Create(aBlockReadPeriod, aHistoryDepthPeriod: longint; aLogger: Tlogger);
 begin
-  blockTimePeriod := aBlockTimePeriod;
+  blockReadPeriod := aBlockReadPeriod;
+  historyDepthPeriod := aHistoryDepthPeriod;
+  log := aLogger;
 end;
 
 procedure TTextAnalyser.DoAnalysis;
 var
-  blockFound, prevBlockContains, allDone: boolean;
-  sourceIdx, entryIdx: integer;
+  blockFound, prevBlockContainsString, allDone: boolean;
+  sourceBlockIdx, entryIdx: integer;
   stringNo: integer;
   prevBlockTime: longint;
   strs: TStrings;
-  s: string;
+  newStrFromBlock, prevStrFromBlock: string;
   i: integer;
 begin
   strs := TStringList.Create;
-  sourceIdx := 0;
+  strs.Delimiter := Chr(10);
+  strs.StrictDelimiter := true;
+  sourceBlockIdx := 0;
   stringNo := 0;
   allDone := false;
   while not allDone do
     begin
-      //сначала ищем в массиве первый необработанный блок
+      //сначала ищем в массиве, с самого начала, первый необработанный блок
       blockFound := false;
       while not blockFound do
         begin
-          if not source[sourceIdx].processed then
+          if not source[sourceBlockIdx].processed then
             begin
               blockFound := true;
               break;
             end;
-          Inc(sourceIdx);
-          if sourceIdx > High(source) then
+          Inc(sourceBlockIdx);
+          if sourceBlockIdx > High(source) then
             begin
               allDone := true;
               break;
@@ -116,19 +141,18 @@ begin
         end;
       if blockFound then //необработанный блок найден
         begin
-          strs.Delimiter := Chr(10);
-          strs.StrictDelimiter := true;
           //смотрим есть ли предыдущий блок, если нет то просто из этого блока делаем энтри построчно
           //пустые строки пропускаем
-          strs.DelimitedText := source[sourceIdx].text;
-          if sourceIdx = 0 then
+          strs.Clear;
+          strs.DelimitedText := source[sourceBlockIdx].text;
+          if sourceBlockIdx = 0 then //номер необработанного блока=0, т.е. он единственный пока
             begin
               for i := 0 to strs.Count - 1 do
                 begin
-                  s := Trim(strs[i]);
-                  if Length(s) > 1 then
+                  newStrFromBlock := Trim(strs[i]);
+                  if Length(newStrFromBlock) > 1 then
                     begin
-                      AddEntry(source[sourceIdx].blockId, stringNo, source[sourceIdx].createdTime, s, 1, false, false);
+                      AddEntry(source[sourceBlockIdx].blockId, stringNo, source[sourceBlockIdx].createdTime, newStrFromBlock, 1, false, false);
                       Inc(stringNo);
                     end;
                 end;
@@ -137,45 +161,51 @@ begin
             begin
               for i := 0 to strs.Count - 1 do
                 begin
-                  s := Trim(strs[i]);
-                  if Length(s) > 1 then
+                  newStrFromBlock := Trim(strs[i]);
+
+                  if Length(newStrFromBlock) <= 1 then //односимвольное и пустое пропускаем
+                    continue;
+                  //проверяем нет ли такой похожей строки в предыдущем блоке
+                  //определяем время, до которого смотрим "назад" в блоки для поиска похожих строк
+                  prevBlockTime := Round(source[sourceBlockIdx].createdTime - historyDepthPeriod);
+                  prevBlockContainsString := false;
+                  //начинаем просмотр с последней строки
+                  entryIdx := High(entries);
+                  while true do
                     begin
-                      //проверяем нет ли такой похожей строки в предыдущем блоке
-                      prevBlockTime := Round(source[sourceIdx].createdTime - blockTimePeriod);
-                      prevBlockContains := false;
-                      entryIdx := High(entries);
-                      while true do
+                      //пока в диапазоне просмотра
+                      if entries[entryIdx].createdTime > prevBlockTime then
                         begin
-                          if entries[entryIdx].createdTime > prevBlockTime then
+                          //todo: вынести в конфиг
+                          //ищем похожую строку с степенью похожести 0.6
+                          if StringSimilarityRatio(entries[entryIdx].text, newStrFromBlock, true) > 0.6 then
                             begin
-                              if StringSimilarityRatio(entries[entryIdx].str, s, true) > 0.6 then
-                                begin
-                                  entries[entryIdx].str := s;
-                                  entries[entryIdx].blockId := source[sourceIdx].blockId;
-                                  //???
-                                  entries[entryIdx].createdTime := source[sourceIdx].createdTime;
-                                  entries[entryIdx].version := entries[entryIdx].version + 1;
-                                  prevBlockContains := true;
-                                  break;
-                                end;
+                              AddEntryHistory(entryIdx, entries[entryIdx].createdTime, entries[entryIdx].text, entries[entryIdx].version);
+                              entries[entryIdx].text := newStrFromBlock;
+                              entries[entryIdx].blockId := source[sourceBlockIdx].blockId;
+                              //???
+                              entries[entryIdx].createdTime := source[sourceBlockIdx].createdTime;
+                              entries[entryIdx].version := entries[entryIdx].version + 1;
+                              prevBlockContainsString := true;
+                              break;
                             end;
-                          Dec(entryIdx);
-                          if entryIdx < 0 then
-                            break;
-                          if entries[entryIdx].createdTime <= prevBlockTime then
-                            break;
                         end;
-                      if not prevBlockContains then
-                        begin
-                          Inc(stringNo);
-                          AddEntry(source[sourceIdx].blockId, stringNo, source[sourceIdx].createdTime, s, 1, false, false);
-                        end;
+                      Dec(entryIdx);
+                      if entryIdx < 0 then
+                        break;
+                      if entries[entryIdx].createdTime <= prevBlockTime then
+                        break;
+                    end;
+                  if not prevBlockContainsString then
+                    begin
+                      Inc(stringNo);
+                      AddEntry(source[sourceBlockIdx].blockId, stringNo, source[sourceBlockIdx].createdTime, newStrFromBlock, 1, false, false);
                     end;
                 end;
             end;
-          source[sourceIdx].processed := true;
-          Inc(sourceIdx);
-          if sourceIdx > High(source) then
+          source[sourceBlockIdx].processed := true;
+          Inc(sourceBlockIdx);
+          if sourceBlockIdx > High(source) then
             allDone := true;
         end;
     end;
@@ -204,7 +234,7 @@ begin
       if ((s = aBlockDelimeter) and (Length(txt) > 0) and (txt <> aBlockDelimeter)) or Eof(f) then
         begin
           AddSourceRec(id, txt, blockTime, false);
-          blockTime := blockTime + 1000;
+          blockTime := blockTime + blockReadPeriod;
           inc(id);
           txt := '';
         end
@@ -218,21 +248,22 @@ begin
   CloseFile(f);
 end;
 
-function TTextAnalyser.ReadEntry(var aText: string; var aTime: longint; var aEntryIdx: integer): boolean;
+function TTextAnalyser.ReadEntry(aMinVersion: integer; var aText: string; var aTime: longint; var aEntryIdx: integer): boolean;
 var
   entriesEnd: boolean;
   //  entryIdx: integer;
 begin
   entriesEnd := false;
   //  entryIdx := 0;
-  Result:=false;
+  Result := false;
+
   while not entriesEnd do
     begin
       if aEntryIdx > High(entries) then
         break;
-      if not entries[aEntryIdx].read then
+      if (not entries[aEntryIdx].read) and (entries[aEntryIdx].version >= aMinVersion) then
         begin
-          aText := entries[aEntryIdx].str;
+          aText := entries[aEntryIdx].text;
           aTime := entries[aEntryIdx].createdTime;
           entries[aEntryIdx].read := true;
           Result := true;
@@ -245,16 +276,18 @@ end;
 procedure TTextAnalyser.SaveToFile(aFileName: string);
 var
   f: TextFile;
-  i: integer;
+  i, j: integer;
 begin
   AssignFile(f, aFileName);
   Rewrite(f);
-
   for i := 0 to Length(entries) - 1 do
-    //    WriteLn(f, IntToStr(entries[i].createdTime) + ' ' + entries[i].str + ' ' + IntTostr(entries[i].version));
-    WriteLn(f, entries[i].str);
+    begin
+      //      if entries[i].version > 1 then
+      WriteLn(f, IntToStr(entries[i].version) + ' ' + entries[i].text);
+      for j := 0 to Length(entries[i].history) - 1 do
+        WriteLn(f, '  ' + IntToStr(entries[i].history[j].version) + ' ' + entries[i].history[j].text);
+    end;
   CloseFile(f);
-
 end;
 
 end.

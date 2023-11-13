@@ -18,7 +18,6 @@ type
     windowTitle: string;
     bitmap: TPicture;
     //    bitmap: TBitmap;
-    function IIf(aValue: boolean; aIfTrue, aIfFalse: integer): integer;
 
   public
     windowRect: TRect;
@@ -27,13 +26,16 @@ type
     procedure SetParams(aPaddingLeft, aPaddingRight, aPaddingTop, aPaddingBottom: double);
     function FindWindowByTite(aWindowTitleMask: string; var aWndHandle: HWND; var aWindowName: string): boolean;
     function GetScreenShot(aInvertMode: boolean): boolean;
+    function LoadScreenShot(aFilePath: string): boolean;
+    function SaveScreenShot(aFilePath: string): boolean;
     //    function GetBitmap(): TBitmap;
     function GetWndRect(): TRect;
     function GetTargetRect(): TRect;
     function GetWndHandle(): HWND;
-
     procedure UpdateWindowRect();
     function IsInitialised(): boolean;
+
+    class function IIf(aValue: boolean; aIfTrue, aIfFalse: integer): integer;
 
   end;
 
@@ -106,7 +108,7 @@ begin
   Result := windowRect;
 end;
 
-function TScreenShotHelper.IIf(aValue: boolean; aIfTrue, aIfFalse: integer): integer;
+class function TScreenShotHelper.IIf(aValue: boolean; aIfTrue, aIfFalse: integer): integer;
 begin
   if aValue then
     Result := aIfTrue
@@ -116,7 +118,23 @@ end;
 
 function TScreenShotHelper.IsInitialised: boolean;
 begin
-  Result := (windowHandle <> 0) or (windowTitle<>'') ;
+  Result := (windowHandle <> 0) or (windowTitle <> '');
+end;
+
+function TScreenShotHelper.LoadScreenShot(aFilePath: string): boolean;
+begin
+  bitmap.LoadFromFile(aFilePath);
+  Result := true;
+end;
+
+function TScreenShotHelper.SaveScreenShot(aFilePath: string): boolean;
+begin
+  Result := false;
+  if Assigned(bitmap) then
+    begin
+      bitmap.SaveToFile(aFilePath);
+      Result := true;
+    end;
 end;
 
 procedure TScreenShotHelper.SetParams(aPaddingLeft, aPaddingRight, aPaddingTop, aPaddingBottom: double);
@@ -151,8 +169,8 @@ begin
     begin
       aWndHandle := GetDesktopWindow();
       aWindowName := 'Desktop';
-      windowHandle:=aWndHandle;
-      windowTitle:=aWindowName;
+      windowHandle := aWndHandle;
+      windowTitle := aWindowName;
       Result := true;
       Exit;
     end;

@@ -1,0 +1,342 @@
+----------
+Vn
+
+Sunny Saurabh (External)
+
+OK, so I think Natalia Sogi. So in in the current design. So basically
+what we are doing is for for creation of our serious booking, basically
+what we are looking, we are looking for.
+
+Sunny Saurabh (External)
+logic where it says dubai arrival dubai departure and then based on
+
+----------
+Sunny Saurabh (External)
+
+OK, so I think Natalia Sogi. So in in the current design. So basically
+what we are doing is for for creation of our serious booking, basically
+what we are looking, we are looking for.
+
+Sunny Saurabh (External)
+logic where it says dubai arrival dubai departure and then based on
+then it cheques for certain other condition and
+
+----------
+OK, so I think Natalia Sogi. So in in the current design. So basically
+what we are doing is for for creation of our serious booking, basically
+what we are looking, we are looking for.
+
+Sunny Saurabh (External)
+
+logic where it says dubai arrival dubai departure and then based on
+then it cheques for certain other condition and it creates the i mean
+then
+
+----------
+OK, so I think Natalia Sogi. So in in the current design. So basically
+what we are doing is for for creation of our serious booking, basically
+what we are looking, we are looking for.
+
+Sunny Saurabh (External)
+
+logic where it says dubai arrival dubai departure and then based on
+then it cheques for certain other condition and it creates the i mean
+then it processes that particular booking so
+
+----------
+what we are doing is for for creation of our serious booking, basically
+what we are looking, we are looking for.
+
+Sunny Saurabh (External)
+
+logic where it says dubai arrival dubai departure and then based on
+then it cheques for certain other condition and it creates the i mean
+then it processes that particular booking so we have a new
+requirement which says
+
+----------
+what we are doing is for for creation of our serious booking, basically
+what we are looking, we are looking for.
+
+Sunny Saurabh (External)
+
+logic where it says dubai arrival dubai departure and then based on
+then it cheques for certain other condition and it creates the i mean
+then it processes that particular booking so we have a new
+requirement which says that other than
+
+----------
+what we are doing is for for creation of our serious booking, basically
+what we are looking, we are looking for.
+
+Sunny Saurabh (External)
+
+logic where it says dubai arrival dubai departure and then based on
+then it cheques for certain other condition and it creates the i mean
+then it processes that particular booking so we have a new
+requirement which says that other than the that particular
+
+----------
+what we are looking, we are looking for.
+
+Sunny Saurabh (External)
+
+logic where it says dubai arrival dubai departure and then based on
+then it cheques for certain other condition and it creates the i mean
+then it processes that particular booking so we have a new
+requirement which says that other than the that particular where the
+surface segment is added
+
+----------
+what we are looking, we are looking for.
+
+Sunny Saurabh (External)
+
+logic where it says dubai arrival dubai departure and then based on
+then it cheques for certain other condition and it creates the i mean
+then it processes that particular booking so we have a new
+requirement which says that other than the that particular where the
+surface segment is added other than the surface segment
+
+----------
+Sunny Saurabh (External)
+
+logic where it says dubai arrival dubai departure and then based on
+then it cheques for certain other condition and it creates the i mean
+then it processes that particular booking so we have a new
+requirement which says that other than the that particular where the
+surface segment is added other than the surface segment it could be
+that a new
+
+----------
+Sunny Saurabh (External)
+
+logic where it says dubai arrival dubai departure and then based on
+then it cheques for certain other condition and it creates the i mean
+then it processes that particular booking so we have a new
+requirement which says that other than the that particular where the
+surface segment is added other than the surface segment it could be
+that a new ssr so for example
+
+----------
+then it cheques for certain other condition and it creates the | mean
+then it processes that particular booking. So we have a new
+requirement which says that other than the that particular where the
+Surface segment is added other than the Surface segment it could be
+that a new SSR so for example.
+
+Sunny Saurabh (External)
+currently
+
+----------
+then it cheques for certain other condition and it creates the | mean
+then it processes that particular booking. So we have a new
+requirement which says that other than the that particular where the
+Surface segment is added other than the Surface segment it could be
+that a new SSR so for example.
+
+Sunny Saurabh (External)
+currently we are processing say ctc ctc
+
+----------
+then it processes that particular booking. So we have a new
+requirement which says that other than the that particular where the
+Surface segment is added other than the Surface segment it could be
+that a new SSR so for example.
+
+Sunny Saurabh (External)
+currently we are processing say ctc ctcm similar there could be a new
+ssr like that
+
+----------
+then it processes that particular booking. So we have a new
+requirement which says that other than the that particular where the
+Surface segment is added other than the Surface segment it could be
+that a new SSR so for example.
+
+Sunny Saurabh (External)
+currently we are processing say ctc ctcm similar there could be a new
+ssr like that and that ssr
+
+----------
+then it processes that particular booking. So we have a new
+requirement which says that other than the that particular where the
+Surface segment is added other than the Surface segment it could be
+that a new SSR so for example.
+
+Sunny Saurabh (External)
+currently we are processing say ctc ctcm similar there could be a new
+sst like that and that ssr if it is present in the pnr and
+
+----------
+requirement which says that other than the that particular where the
+Surface segment is added other than the Surface segment it could be
+that a new SSR so for example.
+
+Sunny Saurabh (External)
+
+currently we are processing say ctc ctcm similar there could be a new
+ssr like that and that ssr if it is present in the pnr and even if that
+surface segment is not present
+
+----------
+requirement which says that other than the that particular where the
+Surface segment is added other than the Surface segment it could be
+that a new SSR so for example.
+
+Sunny Saurabh (External)
+
+currently we are processing say ctc ctcm similar there could be a new
+ssr like that and that ssr if it is present in the pnr and even if that
+surface segment is not present we should still go
+
+----------
+Surface segment is added other than the Surface segment it could be
+that a new SSR so for example.
+
+Sunny Saurabh (External)
+
+currently we are processing say ctc ctcm similar there could be a new
+ssr like that and that ssr if it is present in the pnr and even if that
+surface segment is not present we should still go ahead and do the
+the
+
+----------
+Surface segment is added other than the Surface segment it could be
+that a new SSR so for example.
+
+Sunny Saurabh (External)
+
+currently we are processing say ctc ctcm similar there could be a new
+ssr like that and that ssr if it is present in the pnr and even if that
+surface segment is not present we should still go ahead and do the
+the provide the cds
+
+----------
+Surface segment is added other than the Surface segment it could be
+that a new SSR so for example.
+
+Sunny Saurabh (External)
+
+Currently we are processing say CTC ctcm similar. There could be a
+new SSR like that and that SSR if it is present in the PNR and even if
+that Surface segment is not present we should still go ahead and do
+the the provide the CDs booking for that particular PNR.
+
+----------
+Sunny Saurabh (External)
+
+Currently we are processing say CTC ctcm similar. There could be a
+new SSR like that and that SSR if it is present in the PNR and even if
+that Surface segment is not present we should still go ahead and do
+the the provide the CDs booking for that particular PNR.
+
+Sunny Saurabh (External)
+so this this would be like a
+
+----------
+Currently we are processing say CTC ctcm similar. There could be a
+new SSR like that and that SSR if it is present in the PNR and even if
+that Surface segment is not present we should still go ahead and do
+the the provide the CDs booking for that particular PNR.
+
+Sunny Saurabh (External)
+
+so this this would be like a paid functionality somebody wants to buy
+it
+
+----------
+Currently we are processing say CTC ctcm similar. There could be a
+new SSR like that and that SSR if it is present in the PNR and even if
+that Surface segment is not present we should still go ahead and do
+the the provide the CDs booking for that particular PNR.
+
+Sunny Saurabh (External)
+so this this would be like a paid functionality somebody wants to buy
+it the shopper dr services
+
+----------
+Currently we are processing say CTC ctcm similar. There could be a
+new SSR like that and that SSR if it is present in the PNR and even if
+that Surface segment is not present we should still go ahead and do
+the the provide the CDs booking for that particular PNR.
+
+Sunny Saurabh (External)
+so this this would be like a paid functionality somebody wants to buy
+it the shopper dr services that ssr will get automatically added
+
+----------
+new SSR like that and that SSR if it is present in the PNR and even if
+that Surface segment is not present we should still go ahead and do
+the the provide the CDs booking for that particular PNR.
+
+Sunny Saurabh (External)
+
+so this this would be like a paid functionality somebody wants to buy
+it the shopper dr services that ssr will get automatically added into
+the pnr and
+
+----------
+new SSR like that and that SSR if it is present in the PNR and even if
+that Surface segment is not present we should still go ahead and do
+the the provide the CDs booking for that particular PNR.
+
+Sunny Saurabh (External)
+
+so this this would be like a paid functionality somebody wants to buy
+it the shopper dr services that ssr will get automatically added into
+the pnr and based on that ssr even though
+
+----------
+that Surface segment is not present we should still go ahead and do
+the the provide the CDs booking for that particular PNR.
+
+Sunny Saurabh (External)
+
+so this this would be like a paid functionality somebody wants to buy
+it the shopper dr services that ssr will get automatically added into
+the pnr and based on that ssr even though the service segment is not
+present other than
+
+----------
+that Surface segment is not present we should still go ahead and do
+the the provide the CDs booking for that particular PNR.
+
+Sunny Saurabh (External)
+
+so this this would be like a paid functionality somebody wants to buy
+it the shopper dr services that ssr will get automatically added into
+the pnr and based on that ssr even though the service segment is not
+present other than the current logic which we have
+
+----------
+the the provide the CDs booking for that particular PNR.
+
+Sunny Saurabh (External)
+
+so this this would be like a paid functionality somebody wants to buy
+it the shopper dr services that ssr will get automatically added into
+the pnr and based on that ssr even though the service segment is not
+present other than the current logic which we have we should still go
+ahead and provide
+
+----------
+the the provide the CDs booking for that particular PNR.
+
+Sunny Saurabh (External)
+
+so this this would be like a paid functionality somebody wants to buy
+it the shopper dr services that ssr will get automatically added into
+the pnr and based on that ssr even though the service segment is not
+present other than the current logic which we have we should still go
+ahead and provide that pnr with the shuffle time services
+
+----------
+Sunny Saurabh (External)
+
+so this this would be like a paid functionality somebody wants to buy
+it the shopper dr services that ssr will get automatically added into
+the pnr and based on that ssr even though the service segment is not
+present other than the current logic which we have we should still go
+ahead and provide that pnr with the shuffle time services so this is in
+a nutshell is

@@ -1,0 +1,25 @@
+4 OK, so I think Natalia Sogi. So in in the current design. So basically
+7 what we are doing is for for creation of our serious booking, basically
+9 what we are looking, we are looking for.
+13 Sunny Saurabh (External)
+11 logic where it says dubai arrival dubai departure and then based on
+11 then it cheques for certain other condition and it creates the | mean
+11 then it processes that particular booking. So we have a new
+13 requirement which says that other than the that particular where the
+4 surface segment is not present we should still go ahead and do the
+11 Surface segment is added other than the Surface segment it could be
+11 that a new SSR so for example.
+11 Sunny Saurabh (External)
+10 Currently we are processing say CTC ctcm similar. There could be a
+2 then it processes that particular booking. So we have a new
+12 new SSR like that and that SSR if it is present in the PNR and even if
+2 Surface segment is added other than the Surface segment it could be
+10 that Surface segment is not present we should still go ahead and do
+11 the the provide the CDs booking for that particular PNR.
+10 Sunny Saurabh (External)
+10 so this this would be like a paid functionality somebody wants to buy
+2 Currently we are processing say CTC ctcm similar. There could be a
+8 it the shopper dr services that ssr will get automatically added into
+6 the pnr and based on that ssr even though the service segment is not
+4 present other than the current logic which we have we should still go
+2 ahead and provide that pnr with the shuffle time services so this is in

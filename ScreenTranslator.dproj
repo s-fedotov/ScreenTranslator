@@ -53,6 +53,7 @@
 			</DCCReference>
 			<DCCReference Include="StringSimilarity.pas"/>
 			<DCCReference Include="TextAnalyser.pas"/>
+			<DCCReference Include="Logger.pas"/>
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>

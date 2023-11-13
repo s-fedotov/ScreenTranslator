@@ -12,8 +12,9 @@ object frmScreenTranslator: TfrmScreenTranslator
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  Position = poScreenCenter
+  Position = poDefault
   Scaled = False
+  OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnResize = FormResize
@@ -39,7 +40,6 @@ object frmScreenTranslator: TfrmScreenTranslator
     Color = clRed
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = 67
   end
   object Panel2: TPanel
     Left = 0
@@ -51,8 +51,6 @@ object frmScreenTranslator: TfrmScreenTranslator
     Color = clRed
     ParentBackground = False
     TabOrder = 1
-    ExplicitTop = 70
-    ExplicitHeight = 620
   end
   object Panel3: TPanel
     Left = 759
@@ -64,8 +62,6 @@ object frmScreenTranslator: TfrmScreenTranslator
     Color = clRed
     ParentBackground = False
     TabOrder = 2
-    ExplicitTop = 70
-    ExplicitHeight = 620
   end
   object Panel5: TPanel
     Left = 0
@@ -77,7 +73,6 @@ object frmScreenTranslator: TfrmScreenTranslator
     Color = clRed
     ParentBackground = False
     TabOrder = 3
-    ExplicitTop = 690
   end
   object p_top: TPanel
     Left = 0
@@ -90,7 +85,7 @@ object frmScreenTranslator: TfrmScreenTranslator
     object GroupBox1: TGroupBox
       Left = 6
       Top = 1
-      Width = 365
+      Width = 331
       Height = 34
       Caption = 'Paddings'
       Font.Charset = DEFAULT_CHARSET
@@ -101,7 +96,7 @@ object frmScreenTranslator: TfrmScreenTranslator
       ParentFont = False
       TabOrder = 0
       object Label4: TLabel
-        Left = 98
+        Left = 76
         Top = 11
         Width = 28
         Height = 14
@@ -116,7 +111,7 @@ object frmScreenTranslator: TfrmScreenTranslator
         ParentFont = False
       end
       object Label5: TLabel
-        Left = 178
+        Left = 150
         Top = 11
         Width = 50
         Height = 14
@@ -131,7 +126,7 @@ object frmScreenTranslator: TfrmScreenTranslator
         ParentFont = False
       end
       object Label6: TLabel
-        Left = 282
+        Left = 246
         Top = 11
         Width = 37
         Height = 14
@@ -146,7 +141,7 @@ object frmScreenTranslator: TfrmScreenTranslator
         ParentFont = False
       end
       object Label3: TLabel
-        Left = 18
+        Left = 4
         Top = 11
         Width = 27
         Height = 14
@@ -161,7 +156,7 @@ object frmScreenTranslator: TfrmScreenTranslator
         ParentFont = False
       end
       object e_paddingLeft: TEdit
-        Left = 132
+        Left = 110
         Top = 11
         Width = 33
         Height = 17
@@ -176,7 +171,7 @@ object frmScreenTranslator: TfrmScreenTranslator
         Text = '0'
       end
       object e_paddingBottom: TEdit
-        Left = 234
+        Left = 206
         Top = 11
         Width = 33
         Height = 17
@@ -191,7 +186,7 @@ object frmScreenTranslator: TfrmScreenTranslator
         Text = '0'
       end
       object e_paddingRight: TEdit
-        Left = 325
+        Left = 289
         Top = 11
         Width = 33
         Height = 17
@@ -206,7 +201,7 @@ object frmScreenTranslator: TfrmScreenTranslator
         Text = '0'
       end
       object e_paddingTop: TEdit
-        Left = 48
+        Left = 34
         Top = 11
         Width = 33
         Height = 17
@@ -222,40 +217,59 @@ object frmScreenTranslator: TfrmScreenTranslator
       end
     end
     object b_run: TButton
-      Left = 377
-      Top = 7
-      Width = 60
+      Left = 429
+      Top = 8
+      Width = 50
       Height = 25
       Caption = 'RUN'
       TabOrder = 1
       OnClick = b_runClick
     end
     object Button3: TButton
-      Left = 441
-      Top = 7
-      Width = 62
+      Left = 485
+      Top = 8
+      Width = 48
       Height = 25
       Caption = 'Close'
       TabOrder = 2
       OnClick = Button3Click
     end
     object Button1: TButton
-      Left = 577
-      Top = 7
-      Width = 75
+      Left = 659
+      Top = 8
+      Width = 30
       Height = 25
-      Caption = 'Button1'
+      Caption = 'b1'
       TabOrder = 3
       OnClick = Button1Click
     end
     object Button4: TButton
-      Left = 656
-      Top = 7
-      Width = 75
+      Left = 695
+      Top = 8
+      Width = 29
       Height = 25
-      Caption = 'Button2'
+      Caption = 'b2'
       TabOrder = 4
       OnClick = Button4Click
+    end
+    object Button2: TButton
+      Left = 726
+      Top = 8
+      Width = 33
+      Height = 25
+      Caption = 'b3'
+      TabOrder = 5
+      OnClick = Button2Click
+    end
+    object c_savePict: TCheckBox
+      Left = 343
+      Top = 12
+      Width = 82
+      Height = 17
+      Caption = 'Save pict'
+      Checked = True
+      State = cbChecked
+      TabOrder = 6
     end
   end
   object Ocr1: TOcr

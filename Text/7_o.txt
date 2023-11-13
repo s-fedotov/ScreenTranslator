@@ -1,0 +1,224 @@
+1 ----------
+1 Vn
+1 Sunny Saurabh (External)
+4 OK, so I think Natalia Sogi. So in in the current design. So basically
+  1 OK, so I think Natalia Sogi. So in in the current design. So basically
+  2 OK, so I think Natalia Sogi. So in in the current design. So basically
+  3 OK, so I think Natalia Sogi. So in in the current design. So basically
+7 what we are doing is for for creation of our serious booking, basically
+  1 what we are doing is for for creation of our serious booking, basically
+  2 what we are doing is for for creation of our serious booking, basically
+  3 what we are doing is for for creation of our serious booking, basically
+  4 what we are doing is for for creation of our serious booking, basically
+  5 what we are doing is for for creation of our serious booking, basically
+  6 what we are doing is for for creation of our serious booking, basically
+9 what we are looking, we are looking for.
+  1 what we are looking, we are looking for.
+  2 what we are looking, we are looking for.
+  3 what we are looking, we are looking for.
+  4 what we are looking, we are looking for.
+  5 what we are looking, we are looking for.
+  6 what we are looking, we are looking for.
+  7 what we are looking, we are looking for.
+  8 what we are looking, we are looking for.
+13 Sunny Saurabh (External)
+  1 Sunny Saurabh (External)
+  2 Sunny Saurabh (External)
+  3 Sunny Saurabh (External)
+  4 Sunny Saurabh (External)
+  5 Sunny Saurabh (External)
+  6 Sunny Saurabh (External)
+  7 Sunny Saurabh (External)
+  8 Sunny Saurabh (External)
+  9 Sunny Saurabh (External)
+  10 Sunny Saurabh (External)
+  11 Sunny Saurabh (External)
+  12 Sunny Saurabh (External)
+11 logic where it says dubai arrival dubai departure and then based on
+  1 logic where it says dubai arrival dubai departure and then based on
+  2 logic where it says dubai arrival dubai departure and then based on
+  3 logic where it says dubai arrival dubai departure and then based on
+  4 logic where it says dubai arrival dubai departure and then based on
+  5 logic where it says dubai arrival dubai departure and then based on
+  6 logic where it says dubai arrival dubai departure and then based on
+  7 logic where it says dubai arrival dubai departure and then based on
+  8 logic where it says dubai arrival dubai departure and then based on
+  9 logic where it says dubai arrival dubai departure and then based on
+  10 logic where it says dubai arrival dubai departure and then based on
+11 then it cheques for certain other condition and it creates the | mean
+  1 then it cheques for certain other condition and
+  2 then it cheques for certain other condition and it creates the i mean
+  3 then it cheques for certain other condition and it creates the i mean
+  4 then it cheques for certain other condition and it creates the i mean
+  5 then it cheques for certain other condition and it creates the i mean
+  6 then it cheques for certain other condition and it creates the i mean
+  7 then it cheques for certain other condition and it creates the i mean
+  8 then it cheques for certain other condition and it creates the i mean
+  9 then it cheques for certain other condition and it creates the i mean
+  10 then it cheques for certain other condition and it creates the i mean
+1 then
+11 then it processes that particular booking. So we have a new
+  1 then it processes that particular booking so
+  2 then it processes that particular booking so we have a new
+  3 then it processes that particular booking so we have a new
+  4 then it processes that particular booking so we have a new
+  5 then it processes that particular booking so we have a new
+  6 then it processes that particular booking so we have a new
+  7 then it processes that particular booking so we have a new
+  8 then it processes that particular booking so we have a new
+  9 then it processes that particular booking. So we have a new
+  10 then it processes that particular booking. So we have a new
+1 requirement which says
+13 requirement which says that other than the that particular where the
+  1 requirement which says that other than
+  2 requirement which says that other than the that particular
+  3 requirement which says that other than the that particular where the
+  4 requirement which says that other than the that particular where the
+  5 requirement which says that other than the that particular where the
+  6 requirement which says that other than the that particular where the
+  7 requirement which says that other than the that particular where the
+  8 requirement which says that other than the that particular where the
+  9 requirement which says that other than the that particular where the
+  10 requirement which says that other than the that particular where the
+  11 requirement which says that other than the that particular where the
+  12 requirement which says that other than the that particular where the
+4 surface segment is not present we should still go ahead and do the
+  1 surface segment is added
+  2 surface segment is not present
+  3 surface segment is not present we should still go
+11 Surface segment is added other than the Surface segment it could be
+  1 surface segment is added other than the surface segment
+  2 surface segment is added other than the surface segment it could be
+  3 surface segment is added other than the surface segment it could be
+  4 Surface segment is added other than the Surface segment it could be
+  5 Surface segment is added other than the Surface segment it could be
+  6 Surface segment is added other than the Surface segment it could be
+  7 Surface segment is added other than the Surface segment it could be
+  8 Surface segment is added other than the Surface segment it could be
+  9 Surface segment is added other than the Surface segment it could be
+  10 Surface segment is added other than the Surface segment it could be
+1 that a new
+11 that a new SSR so for example.
+  1 that a new ssr so for example
+  2 that a new SSR so for example.
+  3 that a new SSR so for example.
+  4 that a new SSR so for example.
+  5 that a new SSR so for example.
+  6 that a new SSR so for example.
+  7 that a new SSR so for example.
+  8 that a new SSR so for example.
+  9 that a new SSR so for example.
+  10 that a new SSR so for example.
+1 currently
+1 then it cheques for certain other condition and it creates the | mean
+11 Sunny Saurabh (External)
+  1 Sunny Saurabh (External)
+  2 Sunny Saurabh (External)
+  3 Sunny Saurabh (External)
+  4 Sunny Saurabh (External)
+  5 Sunny Saurabh (External)
+  6 Sunny Saurabh (External)
+  7 Sunny Saurabh (External)
+  8 Sunny Saurabh (External)
+  9 Sunny Saurabh (External)
+  10 Sunny Saurabh (External)
+1 currently we are processing say ctc ctc
+10 Currently we are processing say CTC ctcm similar. There could be a
+  1 currently we are processing say ctc ctcm similar there could be a new
+  2 currently we are processing say ctc ctcm similar there could be a new
+  3 currently we are processing say ctc ctcm similar there could be a new
+  4 currently we are processing say ctc ctcm similar there could be a new
+  5 currently we are processing say ctc ctcm similar there could be a new
+  6 currently we are processing say ctc ctcm similar there could be a new
+  7 currently we are processing say ctc ctcm similar there could be a new
+  8 Currently we are processing say CTC ctcm similar. There could be a
+  9 Currently we are processing say CTC ctcm similar. There could be a
+1 ssr like that
+2 then it processes that particular booking. So we have a new
+  1 then it processes that particular booking. So we have a new
+1 ssr like that and that ssr
+12 new SSR like that and that SSR if it is present in the PNR and even if
+  1 sst like that and that ssr if it is present in the pnr and
+  2 ssr like that and that ssr if it is present in the pnr and even if that
+  3 ssr like that and that ssr if it is present in the pnr and even if that
+  4 ssr like that and that ssr if it is present in the pnr and even if that
+  5 ssr like that and that ssr if it is present in the pnr and even if that
+  6 new SSR like that and that SSR if it is present in the PNR and even if
+  7 new SSR like that and that SSR if it is present in the PNR and even if
+  8 new SSR like that and that SSR if it is present in the PNR and even if
+  9 new SSR like that and that SSR if it is present in the PNR and even if
+  10 new SSR like that and that SSR if it is present in the PNR and even if
+  11 new SSR like that and that SSR if it is present in the PNR and even if
+1 the
+2 Surface segment is added other than the Surface segment it could be
+  1 Surface segment is added other than the Surface segment it could be
+10 that Surface segment is not present we should still go ahead and do
+  1 surface segment is not present we should still go ahead and do the
+  2 that Surface segment is not present we should still go ahead and do
+  3 that Surface segment is not present we should still go ahead and do
+  4 that Surface segment is not present we should still go ahead and do
+  5 that Surface segment is not present we should still go ahead and do
+  6 that Surface segment is not present we should still go ahead and do
+  7 that Surface segment is not present we should still go ahead and do
+  8 that Surface segment is not present we should still go ahead and do
+  9 that Surface segment is not present we should still go ahead and do
+1 the provide the cds
+11 the the provide the CDs booking for that particular PNR.
+  1 the the provide the CDs booking for that particular PNR.
+  2 the the provide the CDs booking for that particular PNR.
+  3 the the provide the CDs booking for that particular PNR.
+  4 the the provide the CDs booking for that particular PNR.
+  5 the the provide the CDs booking for that particular PNR.
+  6 the the provide the CDs booking for that particular PNR.
+  7 the the provide the CDs booking for that particular PNR.
+  8 the the provide the CDs booking for that particular PNR.
+  9 the the provide the CDs booking for that particular PNR.
+  10 the the provide the CDs booking for that particular PNR.
+1 so this this would be like a
+10 Sunny Saurabh (External)
+  1 Sunny Saurabh (External)
+  2 Sunny Saurabh (External)
+  3 Sunny Saurabh (External)
+  4 Sunny Saurabh (External)
+  5 Sunny Saurabh (External)
+  6 Sunny Saurabh (External)
+  7 Sunny Saurabh (External)
+  8 Sunny Saurabh (External)
+  9 Sunny Saurabh (External)
+10 so this this would be like a paid functionality somebody wants to buy
+  1 so this this would be like a paid functionality somebody wants to buy
+  2 so this this would be like a paid functionality somebody wants to buy
+  3 so this this would be like a paid functionality somebody wants to buy
+  4 so this this would be like a paid functionality somebody wants to buy
+  5 so this this would be like a paid functionality somebody wants to buy
+  6 so this this would be like a paid functionality somebody wants to buy
+  7 so this this would be like a paid functionality somebody wants to buy
+  8 so this this would be like a paid functionality somebody wants to buy
+  9 so this this would be like a paid functionality somebody wants to buy
+1 it
+2 Currently we are processing say CTC ctcm similar. There could be a
+  1 Currently we are processing say CTC ctcm similar. There could be a
+1 it the shopper dr services
+8 it the shopper dr services that ssr will get automatically added into
+  1 it the shopper dr services that ssr will get automatically added
+  2 it the shopper dr services that ssr will get automatically added into
+  3 it the shopper dr services that ssr will get automatically added into
+  4 it the shopper dr services that ssr will get automatically added into
+  5 it the shopper dr services that ssr will get automatically added into
+  6 it the shopper dr services that ssr will get automatically added into
+  7 it the shopper dr services that ssr will get automatically added into
+1 the pnr and
+6 the pnr and based on that ssr even though the service segment is not
+  1 the pnr and based on that ssr even though
+  2 the pnr and based on that ssr even though the service segment is not
+  3 the pnr and based on that ssr even though the service segment is not
+  4 the pnr and based on that ssr even though the service segment is not
+  5 the pnr and based on that ssr even though the service segment is not
+1 present other than
+4 present other than the current logic which we have we should still go
+  1 present other than the current logic which we have
+  2 present other than the current logic which we have we should still go
+  3 present other than the current logic which we have we should still go
+1 ahead and provide
+2 ahead and provide that pnr with the shuffle time services so this is in
+  1 ahead and provide that pnr with the shuffle time services
